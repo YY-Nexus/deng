@@ -1,0 +1,29 @@
+{
+  "greetings": [
+    { "text": "欢迎来到婚礼！有什么可以帮您？💒", "id": "greeting_1" },
+    { "text": "您好！需要导航或查询流程吗？🎊", "id": "greeting_2" },
+    { "text": "恭喜您参加喜宴！我随时为您服务~✨", "id": "greeting_3" },
+    { "text": "新人托我问候您！有任何需要请说~💐", "id": "greeting_4" },
+    { "text": "欢迎贵宾驾到！婚礼流程我最清楚🎉", "id": "greeting_5" },
+    { "text": "洛阳欢迎您！需要了解本地习俗吗？🏮", "id": "greeting_6" }
+  ],
+  "shortcuts": [
+    { "label": "🗺️ 导航到会场", "command": "navigate_to_venue", "action": "navigation" },
+    { "label": "✍️ 签到登记", "command": "guest_checkin", "action": "rsvp" },
+    { "label": "🎵 播放音乐", "command": "play_music", "action": "music" },
+    { "label": "💌 确认出席", "command": "rsvp_confirm", "action": "rsvp" },
+    { "label": "📞 联系新人", "command": "call_contact", "action": "contact" },
+    { "label": "🆘 一键呼叫", "command": "emergency_call", "action": "emergency" }
+  ],
+  "luoyang_tips": {
+    "yingqin": "迎亲：洛阳传统需在上午10点前完成迎亲，寓意圆满吉祥",
+    "jingcha": "敬茶：新人需向双方父母敬茶，长辈赠送红包与祝福",
+    "naodongtang": "闹洞房：亲友嬉戏增添喜庆，注意分寸与新人感受",
+    "huimen": "回门：婚后第三天新娘回娘家，携带礼品拜见父母"
+  },
+  "emotion_responses": {
+    "happy": ["真是太开心了！🎉", "幸福满满！💕"],
+    "curious": ["让我来告诉您～🤔", "这个问题问得好！"],
+    "helpful": ["马上为您办理！✅", "好的，请稍等～"]
+  }
+}
