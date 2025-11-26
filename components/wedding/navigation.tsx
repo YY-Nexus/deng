@@ -1,30 +1,56 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Music, MessageSquare, ClipboardList, Users, MapPin } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navItems = [
-  { label: "首页", href: "#hero" },
-  { label: "关于我们", href: "#about" },
-  { label: "日程安排", href: "#schedule" },
-  { label: "照片墙", href: "#gallery" },
-  { label: "祝福留言", href: "#messages" },
-  { label: "RSVP", href: "#rsvp" },
+  { label: "首页", href: "#hero", type: "scroll" },
+  { label: "关于我们", href: "#about", type: "scroll" },
+  { label: "日程安排", href: "#schedule", type: "scroll" },
+  { label: "照片墙", href: "#gallery", type: "scroll" },
+  { label: "3D画廊", href: "#gallery-3d", type: "scroll" },
+  { label: "互动专区", href: "#interactive", type: "scroll" },
 ]
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("")
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
+
+      const sections = navItems.map((item) => item.href.slice(1))
+      for (const sectionId of sections.reverse()) {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          if (rect.top <= 150) {
+            setActiveSection(sectionId)
+            break
+          }
+        }
+      }
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    const targetId = href.slice(1)
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+    setIsMobileMenuOpen(false)
+  }
 
   return (
     <>
@@ -39,17 +65,22 @@ export function Navigation() {
           <div className="w-32" />
 
           {/* 桌面端导航 */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className={cn(
-                  "text-sm font-medium transition-colors duration-200",
+                  "text-sm font-medium transition-colors duration-200 relative",
                   isScrolled ? "text-gold-200 hover:text-gold-400" : "text-gold-300/80 hover:text-gold-100",
+                  activeSection === item.href.slice(1) && "text-gold-400",
                 )}
               >
                 {item.label}
+                {activeSection === item.href.slice(1) && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold-500 rounded-full" />
+                )}
               </a>
             ))}
           </div>
@@ -87,12 +118,28 @@ export function Navigation() {
               <a
                 key={item.href}
                 href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="px-4 py-3 rounded-xl text-gold-200 hover:bg-gold-500/10 hover:text-gold-100 transition-colors"
+                onClick={(e) => handleNavClick(e, item.href)}
+                className={cn(
+                  "px-4 py-3 rounded-xl transition-colors",
+                  activeSection === item.href.slice(1)
+                    ? "bg-gold-500/20 text-gold-100"
+                    : "text-gold-200 hover:bg-gold-500/10 hover:text-gold-100",
+                )}
               >
                 {item.label}
               </a>
             ))}
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-gold-500/20">
+            <p className="text-gold-400/60 text-xs text-center mb-3">更多功能请使用底部操作栏</p>
+            <div className="flex justify-center gap-4">
+              <Music className="h-5 w-5 text-gold-400/50" />
+              <MessageSquare className="h-5 w-5 text-gold-400/50" />
+              <ClipboardList className="h-5 w-5 text-gold-400/50" />
+              <Users className="h-5 w-5 text-gold-400/50" />
+              <MapPin className="h-5 w-5 text-gold-400/50" />
+            </div>
           </div>
         </div>
       </div>

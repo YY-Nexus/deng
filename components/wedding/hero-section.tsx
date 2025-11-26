@@ -57,6 +57,7 @@ export function HeroSection({ className, copyStyle = "modern" }: HeroSectionProp
 
   return (
     <section
+      id="hero"
       ref={sectionRef}
       className={cn(
         "relative min-h-screen flex flex-col items-center justify-center overflow-hidden",
