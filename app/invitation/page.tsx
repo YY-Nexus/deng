@@ -289,7 +289,7 @@ export default function InvitationPage() {
               poster={primaryVideos[currentVideoIndex].poster}
               onEnded={() => {
                 // 视频结束后自动播放下一个
-                setCurrentVideoIndex((prev) => (prev + 1) % primaryVideos.length)
+                setCurrentVideoIndex(prev => (prev + 1) % primaryVideos.length)
               }}
             >
               <source src={primaryVideos[currentVideoIndex].url} type="video/mp4" />
@@ -308,9 +308,11 @@ export default function InvitationPage() {
 
             {/* 左右切换按钮 */}
             <button
-              onClick={(e) => {
+              onClick={e => {
                 e.stopPropagation()
-                setCurrentVideoIndex((prev) => (prev - 1 + primaryVideos.length) % primaryVideos.length)
+                setCurrentVideoIndex(
+                  prev => (prev - 1 + primaryVideos.length) % primaryVideos.length
+                )
               }}
               className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-colors backdrop-blur-sm"
             >
@@ -318,9 +320,9 @@ export default function InvitationPage() {
             </button>
 
             <button
-              onClick={(e) => {
+              onClick={e => {
                 e.stopPropagation()
-                setCurrentVideoIndex((prev) => (prev + 1) % primaryVideos.length)
+                setCurrentVideoIndex(prev => (prev + 1) % primaryVideos.length)
               }}
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-colors backdrop-blur-sm"
             >
@@ -335,9 +337,7 @@ export default function InvitationPage() {
                   onClick={() => setCurrentVideoIndex(index)}
                   className={cn(
                     'w-2 h-2 rounded-full transition-all',
-                    index === currentVideoIndex
-                      ? 'bg-white w-6'
-                      : 'bg-white/50 hover:bg-white/70'
+                    index === currentVideoIndex ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/70'
                   )}
                 />
               ))}
