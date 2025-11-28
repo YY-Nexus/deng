@@ -63,6 +63,15 @@ export const weddingConfig = {
     document: [{ src: "/wedding/document/wedding-document.jpg", alt: "结婚证照" }],
   },
 
+  // 视频列表（主婚优先）
+  videos: [
+    { url: '/MP4/wedding主婚1.mp4', poster: '/wedding/wedding-主婚合影.jpg', title: '主婚视频1' },
+    { url: '/MP4/wedding主婚2.mp4', poster: '/wedding/wedding-主婚合影2.jpg', title: '主婚视频2' },
+    { url: '/MP4/wedding主婚3.mp4', poster: '/wedding/Bride-主纱1.jpg', title: '新娘婚纱1' },
+    { url: '/MP4/wedding主婚4.mp4', poster: '/wedding/Bride-主纱2.jpg', title: '新娘婚纱2' },
+    { url: '/MP4/wedding主婚5.mp4', poster: '/wedding/Bride-主纱3.jpg', title: '新娘婚纱3' },
+  ],
+
   // 画廊展示 - 整合所有照片用于3D画廊
   gallery: [
     {

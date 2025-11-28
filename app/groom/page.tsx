@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { Heart, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { weddingConfig } from '@/lib/wedding-config'
+import { prioritizeMedia } from '@/lib/media-utils'
 
 export default function GroomPage() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -35,7 +37,16 @@ export default function GroomPage() {
             {/* 照片容器 */}
             <div className="relative bg-slate-900 rounded-lg overflow-hidden">
               <img
-                src="/wedding/Groom主婚单7.jpg"
+                src={
+                  // 尝试优先选择带“主婚/主纱/主婚单/主婚合影”标注的照片
+                  prioritizeMedia(
+                    [
+                      ...(weddingConfig.gallery ?? []),
+                      ...Object.values(weddingConfig.photos ?? {}).flat(),
+                    ],
+                    1
+                  )[0]?.src ?? '/wedding/Groom主婚单7.jpg'
+                }
                 alt="新郎 张波"
                 className="w-full h-auto object-contain"
               />

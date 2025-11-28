@@ -13,6 +13,7 @@ import {
   X,
 } from 'lucide-react'
 import { weddingConfig } from '@/lib/wedding-config'
+import { prioritizeMedia } from '@/lib/media-utils'
 import { cn } from '@/lib/utils'
 
 export default function InvitationPage() {
@@ -21,14 +22,8 @@ export default function InvitationPage() {
   const [showMessage, setShowMessage] = useState(false)
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
 
-  // 主婚视频列表（包含新娘婚纱视频）
-  const primaryVideos = [
-    { url: '/MP4/wedding主婚1.mp4', poster: '/wedding/wedding-主婚合影.jpg', title: '主婚视频1' },
-    { url: '/MP4/wedding主婚2.mp4', poster: '/wedding/wedding-主婚合影2.jpg', title: '主婚视频2' },
-    { url: '/MP4/wedding主婚3.mp4', poster: '/wedding/Bride-主纱1.jpg', title: '新娘婚纱1' },
-    { url: '/MP4/wedding主婚4.mp4', poster: '/wedding/Bride-主纱2.jpg', title: '新娘婚纱2' },
-    { url: '/MP4/wedding主婚5.mp4', poster: '/wedding/Bride-主纱3.jpg', title: '新娘婚纱3' },
-  ]
+  // 从配置中优先选择主婚视频（关键词优先）
+  const primaryVideos = prioritizeMedia(weddingConfig.videos ?? [], 5)
 
   useEffect(() => {
     setIsLoaded(true)
@@ -160,11 +155,21 @@ export default function InvitationPage() {
 
           {/* 新郎照片 */}
           <div className="relative mb-4 rounded-xl overflow-hidden bg-gray-50">
-            <img
-              src="/wedding/Groom主婚单7.jpg"
-              alt="新郎张波"
-              className="w-full h-auto object-contain"
-            />
+              <img
+                src={
+                  // 优先选择带“主婚/主纱”等标注的照片，若无则回退到默认图片
+                  prioritizeMedia(
+                    [
+                      // 从画廊与分区照片中合并候选项
+                      ...(weddingConfig.gallery ?? []),
+                      ...Object.values(weddingConfig.photos ?? {}).flat(),
+                    ],
+                    1
+                  )[0]?.src ?? '/wedding/Groom主婚单7.jpg'
+                }
+                alt="新郎张波"
+                className="w-full h-auto object-contain"
+              />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
               <p className="text-white text-sm text-center font-medium">新郎 张波</p>
             </div>
