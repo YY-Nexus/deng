@@ -33,6 +33,20 @@ export const metadata: Metadata = {
     title: "张波 & 邓芮 婚礼邀请函",
     description: "诚挚邀请您参加我们的婚礼 - 2025年11月29日 洛阳孟津富豪大酒店",
     type: "website",
+    url: "https://deng.0379.love",
+    siteName: "张波 & 邓芮 婚礼邀请函",
+    images: [
+      {
+        url: "/wedding/Groom主婚单7.jpg",
+        alt: "张波 & 邓芮 婚礼邀请函 封面",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "张波 & 邓芮 婚礼邀请函",
+    description: "诚挚邀请您参加我们的婚礼 - 2025年11月29日 洛阳孟津富豪大酒店",
+    images: ["/wedding/Groom主婚单7.jpg"],
   },
 }
 
