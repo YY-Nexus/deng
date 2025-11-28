@@ -84,11 +84,11 @@ export default function InvitationPage() {
       {/* 顶部装饰线条 */}
       <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
 
-      <div className="relative z-10 max-w-lg mx-auto px-6 py-12">
+      <div className="relative z-10 max-w-lg mx-auto px-4 py-6">
         {/* 标题装饰 */}
         <div
           className={cn(
-            'text-center mb-8 transition-all duration-1000',
+            'text-center mb-4 transition-all duration-1000',
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
           )}
         >
@@ -97,19 +97,19 @@ export default function InvitationPage() {
             <Heart className="h-6 w-6 text-rose-500 animate-pulse" fill="currentColor" />
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-rose-400" />
           </div>
-          <h1 className="text-4xl font-serif text-rose-900 mb-2 tracking-wide">囍</h1>
-          <p className="text-lg text-gray-700 tracking-wider">{invitation.title}</p>
+          <h1 className="text-3xl font-serif text-rose-900 mb-1 tracking-wide">囍</h1>
+          <p className="text-base text-gray-700 tracking-wider">{invitation.title}</p>
         </div>
 
         {/* 主邀请卡片 */}
         <div
           className={cn(
-            'bg-white rounded-2xl shadow-2xl p-8 mb-6 border border-rose-100 transition-all duration-1000 delay-200',
+            'bg-white rounded-2xl shadow-2xl p-4 mb-4 border border-rose-100 transition-all duration-1000 delay-200',
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           )}
         >
           {/* 新人名字 */}
-          <div className="text-center mb-8">
+          <div className="text-center mb-4">
             <p className="text-sm text-gray-500 mb-3 tracking-wider">诚挚邀请您参加</p>
             <div className="flex items-center justify-center gap-3 mb-2">
               <span className="text-3xl font-light text-gray-800">{couple.groom}</span>
@@ -126,7 +126,7 @@ export default function InvitationPage() {
           </div>
 
           {/* 日期时间 */}
-          <div className="space-y-4 mb-6">
+          <div className="space-y-3 mb-4">
             <div className="flex items-start gap-3 p-4 bg-rose-50/50 rounded-xl">
               <Calendar className="h-5 w-5 text-rose-600 mt-0.5 flex-shrink-0" />
               <div className="flex-1">
@@ -150,38 +150,37 @@ export default function InvitationPage() {
               <div className="flex-1">
                 <p className="text-sm text-gray-500 mb-1">婚礼地点</p>
                 <p className="text-base font-medium text-gray-800">
-                  {venue.name}
-                  <span className="text-sm text-gray-600">（{venue.branch}）</span>
+                  富豪宴会厅
+                  <span className="text-sm text-gray-600">（阿新大道旁）</span>
                 </p>
                 <p className="text-sm text-gray-500 mt-1">{venue.address}</p>
               </div>
             </div>
           </div>
 
-          {/* 主婚视频预览 */}
-          <div
-            className="relative mb-6 rounded-xl overflow-hidden cursor-pointer group"
-            onClick={() => setShowVideo(true)}
-          >
-            <div className="aspect-[9/16] bg-gradient-to-br from-rose-100 to-rose-200">
-              <img
-                src="/wedding/wedding-主婚合影.jpg"
-                alt="婚礼视频封面"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                <div className="bg-white/90 rounded-full p-4 group-hover:scale-110 transition-transform">
-                  <Play className="h-8 w-8 text-rose-600" fill="currentColor" />
-                </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                <p className="text-white text-sm font-medium">点击播放主婚视频</p>
-              </div>
+          {/* 新郎照片 */}
+          <div className="relative mb-4 rounded-xl overflow-hidden bg-gray-50">
+            <img
+              src="/wedding/Groom主婚单7.jpg"
+              alt="新郎张波"
+              className="w-full h-auto object-contain"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+              <p className="text-white text-sm text-center font-medium">新郎 张波</p>
             </div>
           </div>
 
+          {/* 婚礼地点地图 */}
+          <div className="relative mb-4 rounded-xl overflow-hidden">
+            <img
+              src="/wedding/邀请函地图.jpg"
+              alt="婚礼地点地图"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+
           {/* 洛阳婚礼习俗提示 */}
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-4">
             <p className="text-xs text-amber-800 flex items-center gap-2">
               <span className="text-lg">🏮</span>
               <span>
@@ -194,7 +193,7 @@ export default function InvitationPage() {
         {/* 快捷操作按钮 */}
         <div
           className={cn(
-            'grid grid-cols-3 gap-3 mb-8 transition-all duration-1000 delay-400',
+            'grid grid-cols-3 gap-2 mb-4 transition-all duration-1000 delay-400',
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           )}
         >
@@ -258,7 +257,7 @@ export default function InvitationPage() {
         </div>
 
         {/* 底部装饰 */}
-        <div className="text-center mt-8">
+        <div className="text-center mt-4">
           <p className="text-sm text-gray-400 mb-2">期待您的光临</p>
           <div className="flex items-center justify-center gap-2">
             <div className="h-px w-8 bg-gradient-to-r from-transparent to-rose-300" />
