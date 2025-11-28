@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   title: "张波 & 邓芮 婚礼邀请函 | 2025年11月29日",
   description:
     "诚挚邀请您和您的家人参加我们的婚礼，分享我们的幸福和喜悦！2025年11月29日 农历十月初十 洛阳孟津区富豪大酒店",
-  generator: "v0.app",
   keywords: ["婚礼", "邀请函", "张波", "邓芮", "洛阳", "孟津", "富豪大酒店"],
   icons: {
     icon: [
