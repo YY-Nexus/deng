@@ -54,8 +54,8 @@ export const viewport: Viewport = {
   themeColor: "#d4a847",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  // Keep zooming available for accessibility. Do not disable user scaling.
+  // Do not set maximumScale to 1 (that disables zoom). Allow user scaling for accessibility.
+  userScalable: true,
 }
 
 export default function RootLayout({
