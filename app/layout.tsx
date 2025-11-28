@@ -41,7 +41,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  userScalable: false,
+  // Keep zooming available for accessibility. Do not disable user scaling.
 }
 
 export default function RootLayout({
@@ -52,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body className={`font-sans antialiased`}>
-        {children}
+        <main id="main" role="main">{children}</main>
         <Analytics />
       </body>
     </html>
